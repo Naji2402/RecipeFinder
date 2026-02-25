@@ -35,7 +35,7 @@ function RecipeSearch() {
             value={recipe}
             onChange={(e) => setRecipe(e.target.value)}
           />
-          <button className="bg-amber-300 p-3 rounded-4xl" onClick={addRecipe}>
+          <button className="bg-amber-300 p-3 rounded-4xl hover:cursor-pointer" onClick={addRecipe}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

@@ -1,2 +1,10 @@
 @import "tailwindcss";
 
+@layer components {
+    .heading{
+        @apply text-amber-300 text-lg font-bold lg:text-2xl;
+    }
+    .list{
+        @apply text-white font-medium lg:font-bold lg:text-lg;
+    }
+}
