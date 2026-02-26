@@ -1,24 +1,35 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { fetchedValueContext } from "../../App";
+import { fetchedContext } from "../../App";
 
 function RecipeSearch() {
   const [recipe, setRecipe] = useState("");
-  const [saveRecipe, setSaveRecipe] = useState("pizza");
+  const [saveRecipe, setSaveRecipe] = useState("chicken");
   const { fetchedRecipe, setFetchedRecipe } = useContext(fetchedValueContext);
+  const { isFetched, setIsFetched } = useContext(fetchedContext);
 
-  function addRecipe() {
+  function addRecipe(e) {
     setSaveRecipe(recipe);
+    e.preventDefault();
   }
 
   useEffect(() => {
-    axios
-      .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${saveRecipe}`)
-      .then((res) => setFetchedRecipe(res.data.meals))
-      .catch((err) => {
-        console.log(err);
-      });
+    fetchData(saveRecipe)
   }, [saveRecipe]);
+
+  async function fetchData(saveRecipe) {
+    try {
+      setIsFetched(false)
+      const res = await axios.get(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${saveRecipe}`,
+      );
+      setFetchedRecipe(res.data.meals);
+      setIsFetched(true);
+    } catch (error) {
+      console.log(err.message);
+    }
+  }
 
   return (
     <>
@@ -27,7 +38,10 @@ function RecipeSearch() {
           Welcome To Recipe Finder
         </h1>
         <p className="text-white font-bold my-3">Search Your Recipes</p>
-        <div className="flex gap-2 w-full px-3 max-w-2xl justify-center">
+        <form
+          className="flex gap-2 w-full px-3 max-w-2xl justify-center"
+          onSubmit={addRecipe}
+        >
           <input
             type="search"
             placeholder="Search Recipe"
@@ -35,7 +49,7 @@ function RecipeSearch() {
             value={recipe}
             onChange={(e) => setRecipe(e.target.value)}
           />
-          <button className="bg-amber-300 p-3 rounded-4xl hover:cursor-pointer" onClick={addRecipe}>
+          <button className="bg-amber-300 p-3 rounded-4xl hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -51,7 +65,7 @@ function RecipeSearch() {
               />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
     </>
   );

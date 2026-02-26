@@ -1,17 +1,13 @@
 import { React, useContext } from "react";
-import { recipeNameContext } from "../../App";
+
 
 function RecipeCard(props) {
-  const { recipeName, setRecipeName } = useContext(recipeNameContext);
-  function handleRecipeDetails(e) {
-    setRecipeName(e.currentTarget.dataset.nameValue)
-  }
+  
 
   return (
     <>
-      <div data-name-value={props.name}
+      <div
         className="w-full bg-amber-300 p-2 rounded-2xl flex flex-col gap-2"
-        onClick={handleRecipeDetails}
       >
         <div>
           <img src={props.image} className="w-full rounded-2xl" alt="" />

@@ -6,21 +6,34 @@ import { createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
 export const fetchedValueContext = createContext();
-export const recipeNameContext = createContext();
+export const hamClickContext = createContext();
+export const fetchedContext = createContext();
+export const fetchedDetailsContext = createContext();
 
 function App() {
   const [fetchedRecipe, setFetchedRecipe] = useState([]);
-  const [recipeName, setRecipeName] = useState("");
+  const [hamClick, setHamClick] = useState(false);
+  const [isFetched, setIsFetched] = useState(false);
+  const [isDetailsFetched, setIsDetailsFetched] = useState(false);
 
   return (
     <>
       <fetchedValueContext.Provider value={{ fetchedRecipe, setFetchedRecipe }}>
-        <recipeNameContext.Provider value={{recipeName, setRecipeName}}>
-          <Routes>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route path="productdetails" element={<ProductDetailsMain />}></Route>
-          </Routes>
-        </recipeNameContext.Provider>
+        <hamClickContext.Provider value={{ hamClick, setHamClick }}>
+          <fetchedContext.Provider value={{ isFetched, setIsFetched }}>
+            <fetchedDetailsContext.Provider
+              value={{ isDetailsFetched, setIsDetailsFetched }}
+            >
+              <Routes>
+                <Route path="/" element={<HomePage />}></Route>
+                <Route
+                  path="productdetails/:recipeId"
+                  element={<ProductDetailsMain />}
+                ></Route>
+              </Routes>
+            </fetchedDetailsContext.Provider>
+          </fetchedContext.Provider>
+        </hamClickContext.Provider>
       </fetchedValueContext.Provider>
     </>
   );
