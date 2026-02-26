@@ -5,7 +5,7 @@ import { fetchedContext } from "../../App";
 
 function RecipeSearch() {
   const [recipe, setRecipe] = useState("");
-  const [saveRecipe, setSaveRecipe] = useState("chicken");
+  const [saveRecipe, setSaveRecipe] = useState("");
   const { fetchedRecipe, setFetchedRecipe } = useContext(fetchedValueContext);
   const { isFetched, setIsFetched } = useContext(fetchedContext);
 

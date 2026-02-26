@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage/HomePage";
 import ProductDetailsMain from "./components/ProductIndividual/ProductDetailsMain";
 import { createContext } from "react";
 import { Route, Routes } from "react-router-dom";
+import Favourites from "./components/Favourites/Favourites";
 
 export const fetchedValueContext = createContext();
 export const hamClickContext = createContext();
@@ -30,6 +31,7 @@ function App() {
                   path="productdetails/:recipeId"
                   element={<ProductDetailsMain />}
                 ></Route>
+                <Route path="favourites" element={<Favourites />}></Route>
               </Routes>
             </fetchedDetailsContext.Provider>
           </fetchedContext.Provider>

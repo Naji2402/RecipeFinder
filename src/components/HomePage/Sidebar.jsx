@@ -13,7 +13,7 @@ function Sidebar() {
         <Link to="/" className="text-amber-300 font-bold text-lg">
           Home
         </Link>
-        <Link to="/" className="text-amber-300 font-bold text-lg">
+        <Link to="/favourites" className="text-amber-300 font-bold text-lg">
           Favourite
         </Link>
         <div className="absolute left-3" onClick={() => setHamClick(!hamClick)}>
