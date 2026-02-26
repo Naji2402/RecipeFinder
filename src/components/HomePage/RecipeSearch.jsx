@@ -45,7 +45,7 @@ function RecipeSearch() {
           <input
             type="search"
             placeholder="Search Recipe"
-            className="bg-amber-300 py-3 px-3 rounded-4xl placeholder:text-black placeholder:font-bold outline-hidden  flex-1"
+            className="bg-amber-300 py-3 px-3 rounded-4xl placeholder:text-black placeholder:font-bold outline-hidden  flex-1 [&::-webkit-search-cancel-button]:appearance-none "
             value={recipe}
             onChange={(e) => setRecipe(e.target.value)}
           />
@@ -54,9 +54,9 @@ function RecipeSearch() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
+              strokeWidth={2.5}
+              stroke="#10172aec"
+              className="size-6 hover:scale-110 hover:transition-all"
             >
               <path
                 strokeLinecap="round"

@@ -10,12 +10,14 @@ export const fetchedValueContext = createContext();
 export const hamClickContext = createContext();
 export const fetchedContext = createContext();
 export const fetchedDetailsContext = createContext();
+export const favRecipeContext = createContext();
 
 function App() {
   const [fetchedRecipe, setFetchedRecipe] = useState([]);
   const [hamClick, setHamClick] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
   const [isDetailsFetched, setIsDetailsFetched] = useState(false);
+  const [favRecipe, setFavRecipe] = useState([]);
 
   return (
     <>
@@ -25,14 +27,16 @@ function App() {
             <fetchedDetailsContext.Provider
               value={{ isDetailsFetched, setIsDetailsFetched }}
             >
-              <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-                <Route
-                  path="productdetails/:recipeId"
-                  element={<ProductDetailsMain />}
-                ></Route>
-                <Route path="favourites" element={<Favourites />}></Route>
-              </Routes>
+              <favRecipeContext.Provider value={{favRecipe, setFavRecipe}}>
+                <Routes>
+                  <Route path="/" element={<HomePage />}></Route>
+                  <Route
+                    path="productdetails/:recipeId"
+                    element={<ProductDetailsMain />}
+                  ></Route>
+                  <Route path="favourites" element={<Favourites />}></Route>
+                </Routes>
+              </favRecipeContext.Provider>
             </fetchedDetailsContext.Provider>
           </fetchedContext.Provider>
         </hamClickContext.Provider>
