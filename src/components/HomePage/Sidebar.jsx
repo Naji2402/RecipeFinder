@@ -8,7 +8,7 @@ function Sidebar() {
   return (
     <>
       <div
-        className={`absolute  top-0 right-0 h-full  flex flex-col gap-5 p-8 bg-[#10172a] items-end ${hamClick ? "w-80" : "w-0 hidden"} `}
+        className={`absolute  top-0 right-0 h-full  flex flex-col gap-5 p-8 bg-[#10172a] items-end z-10 ${hamClick ? "w-80" : "w-0 hidden"} `}
       >
         <Link to="/" className="text-amber-300 font-bold text-lg">
           Home
@@ -38,3 +38,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
+

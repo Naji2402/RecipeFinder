@@ -5,23 +5,26 @@ import { favRecipeContext } from "../../App";
 function RecipeCard(props) {
   const [isFavourite, setIsFavourite] = useState(false);
   const { favRecipe, setFavRecipe } = useContext(favRecipeContext);
-  
+
   function handleFavButton() {
-    setIsFavourite(!isFavourite)
+    setIsFavourite(!isFavourite);
     if (!isFavourite) {
-      setFavRecipe((prev) => [...prev, props.id])
-    }else{
-      setFavRecipe((prev) => prev.filter((item) => item !== props.id))
+      setFavRecipe((prev) => [...prev, props.id]);
+    } else {
+      setFavRecipe((prev) => prev.filter((item) => item !== props.id));
     }
   }
-
+  
   useEffect(() => {
-   if(favRecipe.includes(props.id)){
-    setIsFavourite(true);
-   }else {
-    setIsFavourite(false)
-   }
-  }, [favRecipe])
+    if (favRecipe.length !== 0) {
+      if (favRecipe.includes(props.id)) {
+        setIsFavourite(true);
+      } else {
+        setIsFavourite(false);
+      }
+    }
+    localStorage.setItem("fav", JSON.stringify(favRecipe));
+  }, [favRecipe]);
 
   return (
     <>
@@ -35,7 +38,7 @@ function RecipeCard(props) {
             <p className="text-sm font-bold text-gray-700">{props.category}</p>
           </div>
           <div className="flex items-center gap-4">
-            <Link to={`productdetails/${props.id}`}>
+            <Link to={`/productdetails/${props.id}`}>
               <button className=" text-[#10172aec] px-5 py-1 rounded-3xl font-bold border-5 border-[#10172aec] cursor-pointer">
                 View More
               </button>

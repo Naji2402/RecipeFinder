@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import HomePage from "./components/HomePage/HomePage";
 import ProductDetailsMain from "./components/ProductIndividual/ProductDetailsMain";
@@ -18,6 +18,11 @@ function App() {
   const [isFetched, setIsFetched] = useState(false);
   const [isDetailsFetched, setIsDetailsFetched] = useState(false);
   const [favRecipe, setFavRecipe] = useState([]);
+
+  useEffect(() => {
+    let savedRecipeId = JSON.parse(localStorage.getItem("fav"));
+    setFavRecipe(savedRecipeId);
+  }, [])
 
   return (
     <>
