@@ -35,7 +35,7 @@ function RecipeSearch() {
     <>
       <div className="flex items-center flex-col  py-10">
         <h1 className="text-white text-2xl mt-10 font-bold">
-          Welcome To Recipe Finder
+          Welcome To Recipe Book
         </h1>
         <p className="text-white font-bold my-3">Search Your Recipes</p>
         <form

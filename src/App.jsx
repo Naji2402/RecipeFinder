@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     let savedRecipeId = JSON.parse(localStorage.getItem("fav"));
     setFavRecipe(savedRecipeId);
-  }, [])
+  }, []);
 
   return (
     <>
@@ -32,7 +32,7 @@ function App() {
             <fetchedDetailsContext.Provider
               value={{ isDetailsFetched, setIsDetailsFetched }}
             >
-              <favRecipeContext.Provider value={{favRecipe, setFavRecipe}}>
+              <favRecipeContext.Provider value={{ favRecipe, setFavRecipe }}>
                 <Routes>
                   <Route path="/" element={<HomePage />}></Route>
                   <Route

@@ -4,19 +4,22 @@ import { hamClickContext } from "../../App";
 
 function Sidebar() {
   const { hamClick, setHamClick } = useContext(hamClickContext);
+  function handleLinkClick() {
+    setHamClick(!hamClick)
+  }
 
   return (
     <>
       <div
-        className={`absolute  top-0 right-0 h-full  flex flex-col gap-5 p-8 bg-[#10172a] items-end z-10 ${hamClick ? "w-80" : "w-0 hidden"} `}
+        className={`absolute  top-0 right-0 h-full  flex flex-col gap-5 p-8 bg-[#10172a] items-end z-10 ${hamClick ? "w-80" : "w-0 hidden"} fixed top-0 `}
       >
-        <Link to="/" className="text-amber-300 font-bold text-lg">
+        <Link to="/" className="text-amber-300 font-bold text-lg" onClick={handleLinkClick}>
           Home
         </Link>
-        <Link to="/favourites" className="text-amber-300 font-bold text-lg">
+        <Link to="/favourites" className="text-amber-300 font-bold text-lg" onClick={handleLinkClick}>
           Favourite
         </Link>
-        <div className="absolute left-3" onClick={() => setHamClick(!hamClick)}>
+        <div className="absolute left-3" onClick={handleLinkClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

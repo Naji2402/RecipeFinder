@@ -9,7 +9,7 @@ function Loader() {
       );
     return (
         <>
-        <div className={`flex justify-center py-10`}>
+        <div className={`flex justify-center py-10 ${isDetailsFetched ? "hidden" : ""}`}>
             <img src={LoaderImg} className='w-20 animate-spin' alt="loader" />
         </div>
         </>
