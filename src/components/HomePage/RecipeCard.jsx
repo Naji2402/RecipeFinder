@@ -9,15 +9,20 @@ function RecipeCard(props) {
   function handleFavButton() {
     setIsFavourite(!isFavourite);
     if (!isFavourite) {
-      setFavRecipe((prev) => [...prev, props.id]);
+      setFavRecipe((prev) => [...prev, props.recipe]);
     } else {
-      setFavRecipe((prev) => prev.filter((item) => item !== props.id));
+      setFavRecipe((prev) => prev.filter((item) => item.idMeal !== props.id));
     }
   }
-  
+
   useEffect(() => {
-    if (favRecipe.length !== 0) {
-      if (favRecipe.includes(props.id)) {
+    let storedRecipes = JSON.parse(localStorage.getItem("fav"));
+    setFavRecipe(storedRecipes)
+  }, [])
+
+  useEffect(() => {
+    if (favRecipe) {
+      if (favRecipe.includes(props.recipe)) {
         setIsFavourite(true);
       } else {
         setIsFavourite(false);
@@ -25,6 +30,8 @@ function RecipeCard(props) {
     }
     localStorage.setItem("fav", JSON.stringify(favRecipe));
   }, [favRecipe]);
+
+  
 
   return (
     <>

@@ -21,7 +21,9 @@ function App() {
 
   useEffect(() => {
     let savedRecipeId = JSON.parse(localStorage.getItem("fav"));
-    setFavRecipe(savedRecipeId);
+    if (savedRecipeId) {
+      setFavRecipe(savedRecipeId);
+    }
   }, []);
 
   return (

@@ -21,6 +21,7 @@ function RecipeMain() {
                 name={item.strMeal}
                 category={item.strCategory}
                 image={item.strMealThumb}
+                recipe={item}
               />
             );
           })}

@@ -37,13 +37,13 @@ function Header() {
                 Favourite
               </Link>
             </li>
-            {favRecipe.length > 0 ? (
+            {/* {favRecipe && favRecipe.length > 0 ? (
               <div className="bg-amber-300 w-4 h-4 rounded-4xl absolute right-[-5px] top-[-8px] animate-bounce flex justify-center items-center text-sm font-bold">
                 {favRecipe.length}
               </div>
             ) : (
               ""
-            )}
+            )} */}
           </ul>
         </nav>
         <div className="cursor-pointer sm:hidden" onClick={handleHamClick}>
