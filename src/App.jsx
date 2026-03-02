@@ -17,14 +17,15 @@ function App() {
   const [hamClick, setHamClick] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
   const [isDetailsFetched, setIsDetailsFetched] = useState(false);
-  const [favRecipe, setFavRecipe] = useState([]);
+  const [favRecipe, setFavRecipe] = useState(() => {
+    const storedRecipes = localStorage.getItem("favouriteRecipe")
+    return storedRecipes ? JSON.parse(storedRecipes) : []
+  });
 
   useEffect(() => {
-    let savedRecipeId = JSON.parse(localStorage.getItem("fav"));
-    if (savedRecipeId) {
-      setFavRecipe(savedRecipeId);
-    }
-  }, []);
+    localStorage.setItem("favouriteRecipe", JSON.stringify(favRecipe))
+  }, [favRecipe])
+
 
   return (
     <>

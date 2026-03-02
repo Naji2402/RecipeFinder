@@ -6,32 +6,28 @@ function RecipeCard(props) {
   const [isFavourite, setIsFavourite] = useState(false);
   const { favRecipe, setFavRecipe } = useContext(favRecipeContext);
 
+
   function handleFavButton() {
     setIsFavourite(!isFavourite);
-    if (!isFavourite) {
-      setFavRecipe((prev) => [...prev, props.recipe]);
-    } else {
-      setFavRecipe((prev) => prev.filter((item) => item.idMeal !== props.id));
+    if (favRecipe.some((item) => item.idMeal === props.recipe.idMeal)) {
+      setFavRecipe((prev) =>
+        prev.filter((item) => item.idMeal !== props.recipe.idMeal),
+      );
+      return;
     }
+    setFavRecipe((prev) => [...prev, props.recipe]);
   }
 
   useEffect(() => {
-    let storedRecipes = JSON.parse(localStorage.getItem("fav"));
-    setFavRecipe(storedRecipes)
-  }, [])
-
-  useEffect(() => {
     if (favRecipe) {
-      if (favRecipe.includes(props.recipe)) {
+      if (favRecipe.some((item) => item.idMeal === props.recipe.idMeal)) {
         setIsFavourite(true);
       } else {
         setIsFavourite(false);
       }
     }
-    localStorage.setItem("fav", JSON.stringify(favRecipe));
   }, [favRecipe]);
 
-  
 
   return (
     <>
