@@ -3,9 +3,9 @@ import RecipeCard from "./RecipeCard";
 import { fetchedValueContext } from "../../App";
 import NoResult from "./NoResult";
 
+
 function RecipeMain() {
   const { fetchedRecipe, setFetchedRecipe } = useContext(fetchedValueContext);
-
   return (
     <>
       {fetchedRecipe ? (
@@ -24,7 +24,7 @@ function RecipeMain() {
           })}
         </div>
       ) : (
-        <NoResult />
+          <NoResult />
       )}
     </>
   );

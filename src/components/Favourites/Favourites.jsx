@@ -14,19 +14,22 @@ function Favourites() {
 
       <div className="flex flex-col gap-5 py-4 px-3 ">
         {favRecipe.length > 0 ? (
-          <div className="grid gap-5 sm:grid-cols-2 sm:gap-5  md:gap-6 lg:grid-cols-3 lg:gap-8 2xl:grid-cols-4">
-            {favRecipe.map((item) => {
-              return (
-                <RecipeCard
-                  key={item.idMeal}
-                  id={item.idMeal}
-                  name={item.strMeal}
-                  image={item.strMealThumb}
-                  category={item.strCategory}
-                  recipe={item}
-                />
-              );
-            })}
+          <div>
+            <h2 className="text-white font-bold text-xl mb-3">Favourite Recipes</h2>
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-5  md:gap-6 lg:grid-cols-3 lg:gap-8 2xl:grid-cols-4">
+              {favRecipe.map((item) => {
+                return (
+                  <RecipeCard
+                    key={item.idMeal}
+                    id={item.idMeal}
+                    name={item.strMeal}
+                    image={item.strMealThumb}
+                    category={item.strCategory}
+                    recipe={item}
+                  />
+                );
+              })}
+            </div>
           </div>
         ) : (
           <div className="flex justify-center pt-5">
