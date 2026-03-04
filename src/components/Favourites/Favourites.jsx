@@ -15,7 +15,9 @@ function Favourites() {
       <div className="flex flex-col gap-5 py-4 px-3 ">
         {favRecipe.length > 0 ? (
           <div>
-            <h2 className="text-white font-bold text-xl mb-3">Favourite Recipes</h2>
+            <h2 className="text-white font-bold text-xl mb-3">
+              Favourite Recipes
+            </h2>
             <div className="grid gap-5 sm:grid-cols-2 sm:gap-5  md:gap-6 lg:grid-cols-3 lg:gap-8 2xl:grid-cols-4">
               {favRecipe.map((item) => {
                 return (
@@ -33,7 +35,7 @@ function Favourites() {
           </div>
         ) : (
           <div className="flex justify-center pt-5">
-            <h1 className="text-white text-2xl">No Favourite Products</h1>
+            <h1 className="text-white text-2xl">No Favourite Recipes</h1>
           </div>
         )}
       </div>
